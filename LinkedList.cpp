@@ -204,6 +204,39 @@ bool replacePlayerInTeam(TeamNode* head, string teamName, int playerIndex, strin
     return false;
 }
 
+void displayAllTeams(TeamNode* head) {
+    if (head == nullptr) {
+        cout << "Belum ada tim yang terdaftar!\n";
+        return;
+    }
+
+    cout << "\n=== DAFTAR TIM TURNAMEN MOBILE LEGENDS ===\n";
+    TeamNode* current = head;
+    int teamNumber = 1;
+
+    while (current != nullptr) {
+        cout << teamNumber << ". TIM: " << current->teamName << "\n";
+        cout << "   Player Terdaftar: " << current->playerCount << "/5\n";
+
+        if (current->playerCount > 0) {
+            cout << "   " << setw(20) << left << "NICKNAME" 
+                 << setw(15) << left << "ID" 
+                 << setw(15) << left << "SERVER" << "\n";
+            cout << "   " << string(50, '-') << "\n";
+
+            for (int i = 0; i < current->playerCount; i++) {
+                cout << "   " << setw(20) << left << current->players[i].nickname
+                     << setw(15) << left << current->players[i].id
+                     << setw(15) << left << current->players[i].server << "\n";
+            }
+        } else {
+            cout << "   (Belum ada player yang terdaftar)\n";
+        }
+        cout << "\n";
+        current = current->next;
+        teamNumber++;
+    }
+}
 
 void showMenu() {
     cout << "\n=== SISTEM PENDAFTARAN TURNAMEN MOBILE LEGENDS ===\n";
