@@ -59,6 +59,38 @@ void displayRegisteredTeams(TeamNode* head) {
     cout << "\nTotal tim terdaftar: " << number - 1 << "\n";
 }
 
+bool removeTeam(TeamNode*& head, string teamName) {
+    if (head == nullptr) {
+        cout << "Tidak ada tim yang terdaftar!\n";
+        return false;
+    }
+
+    // Jika tim yang dihapus adalah head
+    if (head->teamName == teamName) {
+        TeamNode* temp = head;
+        head = head->next;
+        delete temp;
+        cout << "\nTim '" << teamName << "' berhasil dihapus!\n";
+        return true;
+    }
+
+    // Mencari tim di tengah atau akhir list
+    TeamNode* current = head;
+    while (current->next != nullptr && current->next->teamName != teamName) {
+        current = current->next;
+    }
+
+    if (current->next != nullptr) {
+        TeamNode* temp = current->next;
+        current->next = temp->next;
+        delete temp;
+        cout << "\nTim '" << teamName << "' berhasil dihapus!\n";
+        return true;
+    }
+
+    cout << "\nTim '" << teamName << "' tidak ditemukan dalam daftar!\n";
+    return false;
+}
 
 
 void showMenu() {
