@@ -280,7 +280,6 @@ bool insertTeam(TeamNode*& head, string teamName, int position) {
         return false;
     }
 
-    // Insert di posisi pertama
     if (position == 1) {
         newTeam->next = head;
         head = newTeam;
@@ -288,7 +287,6 @@ bool insertTeam(TeamNode*& head, string teamName, int position) {
         return true;
     }
 
-    // Insert di posisi lain
     TeamNode* current = head;
     for (int i = 1; i < position - 1 && current != nullptr; i++) {
         current = current->next;
