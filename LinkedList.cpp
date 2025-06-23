@@ -92,6 +92,25 @@ bool removeTeam(TeamNode*& head, string teamName) {
     return false;
 }
 
+bool addPlayerToTeam(TeamNode* head, string teamName, string nickname, string id, string server) {
+    TeamNode* current = head;
+    while (current != nullptr) {
+        if (current->teamName == teamName) {
+            if (current->playerCount >= 5) {
+                cout << "Tim '" << teamName << "' sudah penuh (5 player)!\n";
+                return false;
+            }
+            current->players[current->playerCount] = {nickname, id, server};
+            current->playerCount++;
+            cout << "Player '" << nickname << "' berhasil ditambahkan ke tim '" << teamName << "'!\n";
+            return true;
+        }
+        current = current->next;
+    }
+    cout << "Tim '" << teamName << "' tidak ditemukan!\n";
+    return false;
+}
+
 
 void showMenu() {
     cout << "\n=== SISTEM PENDAFTARAN TURNAMEN MOBILE LEGENDS ===\n";
