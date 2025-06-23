@@ -147,6 +147,36 @@ bool addAllPlayersToTeam(TeamNode* head, string teamName) {
     return false;
 }
 
+bool removePlayerFromTeam(TeamNode* head, string teamName, int playerIndex) {
+    TeamNode* current = head;
+    while (current != nullptr) {
+        if (current->teamName == teamName) {
+            if (current->playerCount == 0) {
+                cout << "Tim '" << teamName << "' tidak memiliki player!\n";
+                return false;
+            }
+
+            if (playerIndex < 1 || playerIndex > current->playerCount) {
+                cout << "Nomor player tidak valid! (1-" << current->playerCount << ")\n";
+                return false;
+            }
+
+            string removedPlayer = current->players[playerIndex - 1].nickname;
+
+            // Geser player setelah player yang dihapus
+            for (int i = playerIndex - 1; i < current->playerCount - 1; i++) {
+                current->players[i] = current->players[i + 1];
+            }
+
+            current->playerCount--;
+            cout << "Player '" << removedPlayer << "' berhasil dihapus dari tim '" << teamName << "'!\n";
+            return true;
+        }
+        current = current->next;
+    }
+    cout << "Tim '" << teamName << "' tidak ditemukan!\n";
+    return false;
+}
 
 
 void showMenu() {
