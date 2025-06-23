@@ -238,6 +238,36 @@ void displayAllTeams(TeamNode* head) {
     }
 }
 
+void displayTeam(TeamNode* head, string teamName) {
+    TeamNode* current = head;
+    while (current != nullptr) {
+        if (current->teamName == teamName) {
+            cout << "\n=== DETAIL TIM ===\n";
+            cout << "Nama Tim: " << current->teamName << "\n";
+            cout << "Player Terdaftar: " << current->playerCount << "/5\n\n";
+
+            if (current->playerCount > 0) {
+                cout << setw(20) << left << "NICKNAME" 
+                     << setw(15) << left << "ID" 
+                     << setw(15) << left << "SERVER" << "\n";
+                cout << string(50, '-') << "\n";
+
+                for (int i = 0; i < current->playerCount; i++) {
+                    cout << setw(20) << left << current->players[i].nickname
+                         << setw(15) << left << current->players[i].id
+                         << setw(15) << left << current->players[i].server << "\n";
+                }
+            } else {
+                cout << "Belum ada player yang terdaftar dalam tim ini.\n";
+            }
+            cout << "\n";
+            return;
+        }
+        current = current->next;
+    }
+    cout << "Tim '" << teamName << "' tidak ditemukan!\n";
+}
+
 void showMenu() {
     cout << "\n=== SISTEM PENDAFTARAN TURNAMEN MOBILE LEGENDS ===\n";
     cout << "1. Tambah Tim Baru\n";
