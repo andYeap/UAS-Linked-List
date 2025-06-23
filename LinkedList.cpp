@@ -178,6 +178,32 @@ bool removePlayerFromTeam(TeamNode* head, string teamName, int playerIndex) {
     return false;
 }
 
+bool replacePlayerInTeam(TeamNode* head, string teamName, int playerIndex, string newNickname, string newId, string newServer) {
+    TeamNode* current = head;
+    while (current != nullptr) {
+        if (current->teamName == teamName) {
+            if (current->playerCount == 0) {
+                cout << "Tim '" << teamName << "' tidak memiliki player!\n";
+                return false;
+            }
+
+            if (playerIndex < 1 || playerIndex > current->playerCount) {
+                cout << "Nomor player tidak valid! (1-" << current->playerCount << ")\n";
+                return false;
+            }
+
+            string oldPlayer = current->players[playerIndex - 1].nickname;
+            current->players[playerIndex - 1] = {newNickname, newId, newServer};
+
+            cout << "Player '" << oldPlayer << "' berhasil diganti dengan '" << newNickname << "' di tim '" << teamName << "'!\n";
+            return true;
+        }
+        current = current->next;
+    }
+    cout << "Tim '" << teamName << "' tidak ditemukan!\n";
+    return false;
+}
+
 
 void showMenu() {
     cout << "\n=== SISTEM PENDAFTARAN TURNAMEN MOBILE LEGENDS ===\n";
