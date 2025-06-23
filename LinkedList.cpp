@@ -268,6 +268,45 @@ void displayTeam(TeamNode* head, string teamName) {
     cout << "Tim '" << teamName << "' tidak ditemukan!\n";
 }
 
+bool insertTeam(TeamNode*& head, string teamName, int position) {
+    TeamNode* newTeam = new TeamNode;
+    newTeam->teamName = teamName;
+    newTeam->playerCount = 0;
+    newTeam->next = nullptr;
+
+    if (position < 1) {
+        cout << "Posisi harus minimal 1!\n";
+        delete newTeam;
+        return false;
+    }
+
+    // Insert di posisi pertama
+    if (position == 1) {
+        newTeam->next = head;
+        head = newTeam;
+        cout << "Tim '" << teamName << "' berhasil dimasukkan di posisi " << position << "!\n";
+        return true;
+    }
+
+    // Insert di posisi lain
+    TeamNode* current = head;
+    for (int i = 1; i < position - 1 && current != nullptr; i++) {
+        current = current->next;
+    }
+
+    if (current == nullptr) {
+        cout << "Posisi terlalu besar! Menambahkan di akhir list.\n";
+        delete newTeam;
+        addTeam(head, teamName);
+        return true;
+    }
+
+    newTeam->next = current->next;
+    current->next = newTeam;
+    cout << "Tim '" << teamName << "' berhasil dimasukkan di posisi " << position << "!\n";
+    return true;
+}
+
 void showMenu() {
     cout << "\n=== SISTEM PENDAFTARAN TURNAMEN MOBILE LEGENDS ===\n";
     cout << "1. Tambah Tim Baru\n";
