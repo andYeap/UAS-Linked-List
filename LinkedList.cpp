@@ -40,6 +40,26 @@ void addTeam(TeamNode*& head, string teamName) {
     cout << "Tim '" << teamName << "' berhasil ditambahkan!\n";
 }
 
+void displayRegisteredTeams(TeamNode* head) {
+    if (head == nullptr) {
+        cout << "Tidak ada tim yang terdaftar!\n";
+        return;
+    }
+
+    cout << "\n=== DAFTAR TIM TERDAFTAR ===\n";
+    TeamNode* current = head;
+    int number = 1;
+
+    while (current != nullptr) {
+        cout << number << ". " << current->teamName 
+             << " (" << current->playerCount << "/5 player)\n";
+        current = current->next;
+        number++;
+    }
+    cout << "\nTotal tim terdaftar: " << number - 1 << "\n";
+}
+
+
 
 void showMenu() {
     cout << "\n=== SISTEM PENDAFTARAN TURNAMEN MOBILE LEGENDS ===\n";
