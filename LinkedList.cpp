@@ -18,7 +18,7 @@ struct TeamNode {
     TeamNode* next;
     };
 
-    
+
 void addTeam(TeamNode*& head, string teamName) {
     TeamNode* newTeam = new TeamNode;
     newTeam->teamName = teamName;
@@ -129,7 +129,7 @@ bool addAllPlayersToTeam(TeamNode* head, string teamName) {
                 string nickname, id, server;
                 cout << "Nickname Player " << (i + 1) << " : ";
                 getline(cin, nickname);
-                cout << "ID & Server : ";
+                cout << "ID : ";
                 getline(cin, id);
                 cout << "Server : ";
                 getline(cin, server);
