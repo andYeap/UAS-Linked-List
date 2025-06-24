@@ -207,7 +207,10 @@ bool replacePlayerInTeam(TeamNode* head, string teamName, int playerIndex, strin
     return false;
 }
 
+<<<<<<< HEAD
 // Fungsi untuk menampilkan semua tim dan player
+=======
+>>>>>>> c83dd36d3ea5692863c3b07c197abc2cf4f52a33
 void displayAllTeams(TeamNode* head) {
     if (head == nullptr) {
         cout << "Belum ada tim yang terdaftar!\n";
@@ -242,7 +245,10 @@ void displayAllTeams(TeamNode* head) {
     }
 }
 
+<<<<<<< HEAD
 // Fungsi untuk menampilkan detail tim tertentu
+=======
+>>>>>>> c83dd36d3ea5692863c3b07c197abc2cf4f52a33
 void displayTeam(TeamNode* head, string teamName) {
     TeamNode* current = head;
     while (current != nullptr) {
@@ -273,7 +279,10 @@ void displayTeam(TeamNode* head, string teamName) {
     cout << "Tim '" << teamName << "' tidak ditemukan!\n";
 }
 
+<<<<<<< HEAD
 // Fungsi untuk menyisipkan tim pada posisi tertentu
+=======
+>>>>>>> c83dd36d3ea5692863c3b07c197abc2cf4f52a33
 bool insertTeam(TeamNode*& head, string teamName, int position) {
     TeamNode* newTeam = new TeamNode;
     newTeam->teamName = teamName;
@@ -286,7 +295,10 @@ bool insertTeam(TeamNode*& head, string teamName, int position) {
         return false;
     }
 
+<<<<<<< HEAD
     // Insert di posisi pertama
+=======
+>>>>>>> c83dd36d3ea5692863c3b07c197abc2cf4f52a33
     if (position == 1) {
         newTeam->next = head;
         head = newTeam;
@@ -294,7 +306,10 @@ bool insertTeam(TeamNode*& head, string teamName, int position) {
         return true;
     }
 
+<<<<<<< HEAD
     // Insert di posisi lain
+=======
+>>>>>>> c83dd36d3ea5692863c3b07c197abc2cf4f52a33
     TeamNode* current = head;
     for (int i = 1; i < position - 1 && current != nullptr; i++) {
         current = current->next;
@@ -434,7 +449,11 @@ int main() {
     do {
         showMenu();
         cin >> choice;
+<<<<<<< HEAD
         cin.ignore(); // Membersihkan buffer
+=======
+        cin.ignore();
+>>>>>>> c83dd36d3ea5692863c3b07c197abc2cf4f52a33
 
         switch (choice) {
             case 1:
@@ -444,15 +463,24 @@ int main() {
                 break;
 
             case 2:
+<<<<<<< HEAD
                 // Tampilkan daftar tim terlebih dahulu
                 displayRegisteredTeams(head);
 
                 // Jika ada tim, berikan opsi untuk menghapus
+=======
+                displayRegisteredTeams(head);
+
+>>>>>>> c83dd36d3ea5692863c3b07c197abc2cf4f52a33
                 if (head != nullptr) {
                     cout << "\nApakah Anda ingin menghapus tim? (y/n): ";
                     char pilihan;
                     cin >> pilihan;
+<<<<<<< HEAD
                     cin.ignore(); // Membersihkan buffer
+=======
+                    cin.ignore();
+>>>>>>> c83dd36d3ea5692863c3b07c197abc2cf4f52a33
 
                     if (pilihan == 'y' || pilihan == 'Y') {
                         cout << "Masukkan nama tim yang akan dihapus: ";
@@ -502,7 +530,10 @@ int main() {
 
     } while (choice != 7);
 
+<<<<<<< HEAD
     // Membersihkan memori
+=======
+>>>>>>> c83dd36d3ea5692863c3b07c197abc2cf4f52a33
     while (head != nullptr) {
         TeamNode* temp = head;
         head = head->next;
@@ -510,4 +541,8 @@ int main() {
     }
 
     return 0;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c83dd36d3ea5692863c3b07c197abc2cf4f52a33
